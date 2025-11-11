@@ -38,7 +38,7 @@ jobs:
             echo "environment=development" >> $GITHUB_OUTPUT
           fi
 
-          echo "GitHub_OUTPUT: ${GITHUB_OUTPUT}"
+          echo "GitHub_OUTPUT: ${{ GITHUB_OUTPUT }}"
 
   terraform-plan:
     name: 'Terraform Plan'
