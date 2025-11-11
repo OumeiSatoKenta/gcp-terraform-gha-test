@@ -73,8 +73,8 @@ jobs:
       id: init
       run: |
         terraform init \
-          -backend-config="bucket=${{ secrets.GCP_PROJECT_ID }}-terraform-state" \
-          -backend-config="prefix=terraform/${{ needs.determine-environment.outputs.environment }}/state"
+          -backend-config="bucket=${{ secrets.GCP_BUCKET_NAME }}" \
+          -backend-config="prefix=${{ secrets.GCP_BUCKET_PREFIX }}"
       working-directory: ${{ env.TF_WORKING_DIR }}
 
     - name: Terraform Validate
