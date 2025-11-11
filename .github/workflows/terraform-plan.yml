@@ -61,7 +61,6 @@ jobs:
       id: fmt
       run: terraform fmt -check -recursive
       working-directory: ${{ env.TF_WORKING_DIR }}
-      continue-on-error: true
 
     - name: Authenticate to Google Cloud
       uses: google-github-actions/auth@v2
@@ -89,7 +88,6 @@ jobs:
           -var="project_id=${{ secrets.GCP_PROJECT_ID }}" \
           -out=tfplan
       working-directory: ${{ env.TF_WORKING_DIR }}
-      continue-on-error: true
 
     - name: Generate Plan Summary
       id: summary
