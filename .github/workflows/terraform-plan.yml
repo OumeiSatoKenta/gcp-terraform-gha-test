@@ -87,7 +87,6 @@ jobs:
       run: |
         terraform plan -no-color -input=false \
           -var="project_id=${{ secrets.GCP_PROJECT_ID }}" \
-          -var="environment=${{ needs.determine-environment.outputs.environment }}" \
           -out=tfplan
       working-directory: ${{ env.TF_WORKING_DIR }}
       continue-on-error: true
