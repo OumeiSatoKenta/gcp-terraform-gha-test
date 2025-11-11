@@ -25,6 +25,11 @@ jobs:
       - name: Determine environment
         id: determine
         run: |
+          echo "Event: ${{ github.event_name }}"
+          echo "Base ref: ${{ github.base_ref }}"
+          echo "Head ref: ${{ github.head_ref }}"
+          echo "Ref: ${{ github.ref }}"
+
           if [[ "${{ github.base_ref }}" == "main" ]]; then
             echo "environment=production" >> $GITHUB_OUTPUT
           elif [[ "${{ github.base_ref }}" == "develop" ]]; then
@@ -32,6 +37,8 @@ jobs:
           else
             echo "environment=development" >> $GITHUB_OUTPUT
           fi
+
+          echo "GitHub_OUTPUT: ${GITHUB_OUTPUT}"
 
   terraform-plan:
     name: 'Terraform Plan'
