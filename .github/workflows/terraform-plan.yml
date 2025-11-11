@@ -31,14 +31,12 @@ jobs:
           echo "Ref: ${{ github.ref }}"
 
           if [[ "${{ github.base_ref }}" == "main" ]]; then
-            echo "environment=production" >> $GITHUB_OUTPUT
+            echo "environment=development" >> $GITHUB_OUTPUT
           elif [[ "${{ github.base_ref }}" == "develop" ]]; then
             echo "environment=staging" >> $GITHUB_OUTPUT
           else
             echo "environment=development" >> $GITHUB_OUTPUT
           fi
-
-          echo "GitHub_OUTPUT: ${{ GITHUB_OUTPUT }}"
 
   terraform-plan:
     name: 'Terraform Plan'
